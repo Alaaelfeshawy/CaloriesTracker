@@ -50,11 +50,14 @@ android {
 
 dependencies {
     implementation(Compose.compiler)
+    implementation(platform(Compose.composeBom))
+    implementation(Compose.composeFoundation)
     implementation(Compose.ui)
     implementation(Compose.uiToolingPreview)
     implementation(Compose.hiltNavigationCompose)
     implementation(Compose.material)
     implementation(Compose.runtime)
+    implementation(Compose.lifecycleRuntime)
     implementation(Compose.navigation)
     implementation(Compose.viewModelCompose)
     implementation(Compose.activityCompose)
@@ -63,6 +66,7 @@ dependencies {
     kapt(DaggerHilt.hiltCompiler)
 
     implementation(project(Modules.core))
+    implementation(project(Modules.coreUi))
     implementation(project(Modules.onboardingPresentation))
     implementation(project(Modules.onboardingDomain))
     implementation(project(Modules.trackerPresentation))
@@ -92,7 +96,7 @@ dependencies {
     testImplementation(Testing.turbine)
     testImplementation(Testing.composeUiTest)
     testImplementation(Testing.mockk)
-    testImplementation(Testing.mockWebServer)
+//    testImplementation(Testing.mockWebServer)
 
     androidTestImplementation(Testing.junit4)
     androidTestImplementation(Testing.junitAndroidExt)
@@ -100,8 +104,8 @@ dependencies {
     androidTestImplementation(Testing.coroutines)
     androidTestImplementation(Testing.turbine)
     androidTestImplementation(Testing.composeUiTest)
-    androidTestImplementation(Testing.mockkAndroid)
-    androidTestImplementation(Testing.mockWebServer)
+//    androidTestImplementation(Testing.mockkAndroid)
+//    androidTestImplementation(Testing.mockWebServer)
     androidTestImplementation(Testing.hiltTesting)
     kaptAndroidTest(DaggerHilt.hiltCompiler)
     androidTestImplementation(Testing.testRunner)

@@ -31,9 +31,29 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    buildFeatures {
+        compose =  true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = Compose.composeCompilerVersion
+    }
 }
 
 dependencies {
+    implementation platform(Compose.composeBom)
+    implementation Compose.compiler
+    implementation Compose.composeFoundation
+    implementation Compose.ui
+    implementation Compose.uiToolingPreview
+    implementation Compose.hiltNavigationCompose
+    implementation Compose.material
+    implementation Compose.runtime
+    implementation Compose.lifecycleRuntime
+    implementation Compose.navigation
+    implementation Compose.viewModelCompose
+    implementation Compose.activityCompose
+
     kapt DaggerHilt.hiltCompiler
     implementation DaggerHilt.hiltAndroid
 
@@ -44,7 +64,7 @@ dependencies {
     testImplementation Testing.turbine
     testImplementation Testing.composeUiTest
     testImplementation Testing.mockk
-    testImplementation Testing.mockWebServer
+//    testImplementation Testing.mockWebServer
 
     androidTestImplementation Testing.junit4
     androidTestImplementation Testing.junitAndroidExt
@@ -53,6 +73,6 @@ dependencies {
     androidTestImplementation Testing.turbine
     androidTestImplementation Testing.composeUiTest
     androidTestImplementation Testing.mockk
-    androidTestImplementation Testing.mockWebServer
+//    androidTestImplementation Testing.mockWebServer
     androidTestImplementation Testing.hiltTesting
 }
