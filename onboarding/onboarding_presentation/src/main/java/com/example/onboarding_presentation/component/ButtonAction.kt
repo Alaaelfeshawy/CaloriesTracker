@@ -1,7 +1,7 @@
 package com.example.onboarding_presentation.component
 
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.MaterialTheme
@@ -9,6 +9,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.dp
 import com.example.core_ui.dimension.LocalSpacing
 
 @Composable
@@ -23,13 +24,14 @@ fun ActionButton(
         modifier = modifier,
         onClick = onClick,
         enabled = isEnabled,
-//        colors = ButtonDefaults.buttonColors(
-//            backgroundColor = MaterialTheme.colors.onPrimary
-//        )
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = MaterialTheme.colors.primary
+        ),
+        shape = RoundedCornerShape(100.dp)
         ){
         Text( text = text,
-//            modifier = Modifier.padding(LocalSpacing.current.spaceExtraSmall),
+            modifier = Modifier.padding(LocalSpacing.current.spaceExtraSmall),
             style = textStyle
-            )
+        )
     }
 }
