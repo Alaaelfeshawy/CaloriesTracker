@@ -11,19 +11,19 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
-@InstallIn(SingletonComponent::class)
-@Module
+//@Module
+//@InstallIn(SingletonComponent::class)
 class AppModule {
 
-    @Provides
-    @Singleton
-    fun provideSharedPreferences(app :Application) : SharedPreferences{
-        return app.getSharedPreferences("shared_pref",MODE_PRIVATE)
-    }
-
-    @Provides
-    @Singleton
-    fun providePreferences(sharedPref :SharedPreferences) : Preferences{
-        return DefaultPreferences(sharedPref)
-    }
+//    @Provides
+//    @Singleton
+//    fun provideSharedPreferences(app :Application) : SharedPreferences{
+//        return app.getSharedPreferences("shared_pref",MODE_PRIVATE)
+//    }
+//
+//    @Provides
+//    @Singleton
+//    fun providePreferences(sharedPref :SharedPreferences) : Preferences{
+//        return DefaultPreferences(sharedPref)
+//    }
 }
