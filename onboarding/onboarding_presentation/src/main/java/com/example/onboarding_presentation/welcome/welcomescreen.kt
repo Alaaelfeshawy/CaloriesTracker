@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.core.R
 import com.example.core.navigation.Route
@@ -29,13 +30,16 @@ fun WelcomeScreen(
         verticalArrangement = Arrangement.Center,
     ) {
         Text(
-            text = stringResource(R.string.welcome_text)
+            text = stringResource(R.string.welcome_text),
+            style = MaterialTheme.typography.h1,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.padding(LocalSpacing.current.spaceSmall)
         )
         ActionButton(
             modifier = Modifier.padding(dimen.spaceMedium),
             text = stringResource(R.string.next),
             onClick = {
-                      navigate.invoke(UiEvent.Navigate(Route.AGE))
+                      navigate.invoke(UiEvent.Navigate(Route.GENDER))
             },
             textStyle = MaterialTheme.typography.h1
         )

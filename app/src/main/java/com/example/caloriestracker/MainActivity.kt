@@ -3,9 +3,13 @@ package com.example.caloriestracker
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -13,6 +17,8 @@ import androidx.navigation.compose.rememberNavController
 import com.example.caloriestracker.navigation.navigateTo
 import com.example.caloriestracker.ui.theme.CaloriesTrackerTheme
 import com.example.core.navigation.Route
+import com.example.onboarding_presentation.age.AgeScreen
+import com.example.onboarding_presentation.gender.GenderScreen
 import com.example.onboarding_presentation.welcome.WelcomeScreen
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,32 +33,48 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    val navController = rememberNavController()
-                    NavHost(navController = navController, startDestination = Route.WELCOME ){
-                        composable(Route.WELCOME){
-                            WelcomeScreen{
-                                navController.navigateTo(it)
+                    val scaffoldState = rememberScaffoldState()
+                    Scaffold(
+                        scaffoldState = scaffoldState
+                    ) {
+                        Column(
+                            modifier = Modifier
+                                .padding(it)
+                                .fillMaxSize()
+                        ) {
+                            val navController = rememberNavController()
+                            NavHost(navController = navController, startDestination = Route.WELCOME ){
+                                composable(Route.WELCOME){
+                                    WelcomeScreen{
+                                        navController.navigateTo(it)
+                                    }
+                                }
+                                composable(Route.AGE){
+                                    AgeScreen(
+                                        scaffoldState = scaffoldState,
+                                        navigate = navController::navigateTo)
+                                }
+                                composable(Route.ACTIVITY){
+                                }
+                                composable(Route.GENDER){
+                                    GenderScreen(navigate = navController::navigateTo)
+                                }
+                                composable(Route.GOAL){
+                                }
+                                composable(Route.WEIGHT){
+                                }
+                                composable(Route.NUTRIENT_GOAL){
+                                }
+                                composable(Route.SEARCH){
+                                }
+                                composable(Route.TRACKER_OVERVIEW){
+                                }
+                                composable(Route.HEIGHT){
+                                }
                             }
                         }
-                        composable(Route.AGE){
-                        }
-                        composable(Route.ACTIVITY){
-                        }
-                        composable(Route.GENDER){
-                        }
-                        composable(Route.GOAL){
-                        }
-                        composable(Route.WEIGHT){
-                        }
-                        composable(Route.NUTRIENT_GOAL){
-                        }
-                        composable(Route.SEARCH){
-                        }
-                        composable(Route.TRACKER_OVERVIEW){
-                        }
-                        composable(Route.HEIGHT){
-                        }
                     }
+
                 }
             }
         }
