@@ -86,4 +86,14 @@ class DefaultPreferences @Inject constructor(
             fatRatio = fatRatio,
         )
     }
+
+    override fun saveShouldLoadOnboarding(value: Boolean) {
+        sharedPref.edit()
+            .putBoolean(Preferences.KEY_SHOULD_LOAD_ONBOARDING , value)
+            .apply()
+    }
+
+    override fun getShouldLoadOnboarding(): Boolean {
+        return sharedPref.getBoolean(Preferences.KEY_SHOULD_LOAD_ONBOARDING , true)
+    }
 }
